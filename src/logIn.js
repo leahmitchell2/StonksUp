@@ -38,6 +38,7 @@ const signUp = (auth, email, password, setTheAuthUser) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+
       // ..
     });
 };
@@ -58,6 +59,8 @@ const signIn = (auth, email, password, setTheAuthUser) => {
       const errorMessage = error.message;
       console.log("Not valid");
       console.log(errorMessage);
+      const user = null;
+      console.log(user);
     });
 };
 
@@ -65,7 +68,7 @@ export default function ({ setTheAuthUser, setBalance, balance }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const auth = getAuth(firebaseApp);
-  const [flag, setFlag] = useState(1);
+
   return (
     <div>
       {console.log}
