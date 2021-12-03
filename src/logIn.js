@@ -8,6 +8,7 @@ import firebaseApp from "./firebase-config";
 import app from "./App";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "./firebase-config";
+import avatar from "./images/LogInAvatar.jpg";
 
 const addNewBalance = async (user) => {
   //  e.preventDefault();
@@ -55,6 +56,8 @@ const signIn = (auth, email, password, setTheAuthUser) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log("Not valid");
+      console.log(errorMessage);
     });
 };
 
@@ -62,10 +65,18 @@ export default function ({ setTheAuthUser, setBalance, balance }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const auth = getAuth(firebaseApp);
-
+  const [flag, setFlag] = useState(1);
   return (
     <div>
       {console.log}
+      <h1>--App Name and Logo--</h1>
+      <img
+        className="background"
+        src={avatar}
+        alt="Login Avatar"
+        width="100%"
+        height="500px"
+      />
       <h1>Log In</h1>
       <form
         onSubmit={(e) => {
@@ -74,7 +85,7 @@ export default function ({ setTheAuthUser, setBalance, balance }) {
         }}
       >
         <label>
-          email
+          Email
           <input
             type="email"
             placeholder="Email"
@@ -93,7 +104,10 @@ export default function ({ setTheAuthUser, setBalance, balance }) {
             required
           ></input>
         </label>
-        <button type="submit">SUBMIT</button>
+
+        <button className="submit" type="submit">
+          SUBMIT
+        </button>
       </form>
       <h1>Sign Up</h1>
       <form
@@ -103,7 +117,7 @@ export default function ({ setTheAuthUser, setBalance, balance }) {
         }}
       >
         <label>
-          email
+          Email
           <input
             type="email"
             placeholder="Email"
@@ -122,7 +136,9 @@ export default function ({ setTheAuthUser, setBalance, balance }) {
             required
           ></input>
         </label>
-        <button type="submit">SUBMIT</button>
+        <button className="submit" type="submit">
+          SUBMIT
+        </button>
       </form>
     </div>
   );
